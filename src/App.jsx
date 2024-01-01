@@ -7,10 +7,11 @@ import useCurrencyInfo from './hooks/useCurrencyInfo'
 
 function App() {
 
-  const [amount, setAmount] = useState('0')
+  const [amount, setAmount] = useState('')
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
-  const [convertedAmount, setConvertedAmount] = useState('0')
+  const [convertedAmount, setConvertedAmount] = useState('')
+  const [showtext,setShowtext]=useState('')
 
   const currencyInfo = useCurrencyInfo(from)
 
@@ -28,10 +29,9 @@ function App() {
   }
  
   const show =()=>{
-    const text=document.querySelector('.show-text')
-    const elem=document.createElement("div")
-    elem.innerText=`${amount} in ${from} = ${convertedAmount} in ${to}`
-    text.appendChild(elem)
+   
+    setShowtext(`${amount} in ${from} = ${convertedAmount} in ${to}`);
+    
     }
 
   return (
@@ -81,6 +81,7 @@ function App() {
                         />
                     </div>
                     <div className='show-text'>   
+                        {showtext}
                     </div>
                     <button type="submit" className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg"
                     onClick={show}>
