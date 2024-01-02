@@ -24,15 +24,20 @@ function App() {
     setAmount(convertedAmount)
   }
   
-  const convert = () => {
-    setConvertedAmount(amount * currencyInfo[to])
-  }
- 
-  const show =()=>{
-   
-    setShowtext(`${amount} in ${from} = ${convertedAmount} in ${to}`);
+  const convert = ()=>  {
+    //console.log(amount + " amount");
+    //console.log(convertedAmount + " converted amount 1");
+    setConvertedAmount(amount * currencyInfo[to]);
+    //console.log(convertedAmount + " converted amount");
     
-    }
+  }
+  
+  const show =()=>{   
+    convert();
+    setShowtext(`${amount} in ${from} = ${convertedAmount} in ${to}`);
+  }
+  
+  
 
   return (
     <div
@@ -47,7 +52,8 @@ function App() {
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        convert()
+                        
+                        show();
                        
                     }}
                 >
@@ -84,7 +90,7 @@ function App() {
                         {showtext}
                     </div>
                     <button type="submit" className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg"
-                    onClick={show}>
+                    onClick={convert}>
                         Convert {from.toUpperCase()} to {to.toUpperCase()}
                     </button>
                 </form>
