@@ -22,12 +22,14 @@ function App() {
     setTo(from)
     setConvertedAmount(amount)
     setAmount(convertedAmount)
+    setShowtext(`${convertedAmount} in ${to} = ${amount} in ${from}`)
+
   }
   
   const convert = ()=>  {
     //console.log(amount + " amount");
     //console.log(convertedAmount + " converted amount 1");
-    setConvertedAmount(amount * currencyInfo[to]);
+    setConvertedAmount(Math.round(amount * currencyInfo[to]));
     //console.log(convertedAmount + " converted amount");
     
   }
