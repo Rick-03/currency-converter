@@ -22,6 +22,7 @@ function App() {
 		setTo(from)
 		setConvertedAmount(amount)
 		setAmount(convertedAmount)
+        setShowtext(`${convertedAmount} in ${to} = ${amount} in ${from}`);
 	}
 
 	const convert = () => {
